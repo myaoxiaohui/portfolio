@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姚小慧 - 资深AI产品经理</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <h1 class="nav-title">姚小慧</h1>
+                <span class="nav-subtitle">| Senior AI PM</span>
+            </div>
+            <div class="nav-right">
+                <a href="#experience" class="nav-link">工作经历</a>
+                <a href="#ai-lab" class="nav-link">AI 实验室</a>
+                <button class="download-btn" onclick="downloadPDF()">
+                    <i data-lucide="download"></i>
+                    下载 PDF 简历
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首屏 Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">姚小慧｜资深 AI 产品经理</h1>
+                <div class="hero-subtitle">7年经验 · 211计算机硕士 · PMP认证</div>
+                <div class="tag-cloud">
+                    <span class="tag">🏆 连续两年绩效 3.75</span>
+                    <span class="tag">🚀 AI PaaS 基座负责人</span>
+                    <span class="tag">💡 AI+教育领域专家</span>
+                    <span class="tag">📈 增长闭环操盘手</span>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5000万+</div>
+                        <div class="stat-label">AI 调用量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3000万+</div>
+                        <div class="stat-label">GMV 增量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2.6倍</div>
+                        <div class="stat-label">人效提升</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8000</div>
+                        <div class="stat-label">人均带班量</div>
+                    </div>
+                </div>
+                <div class="hero-highlights">
+                    <div class="highlight-item">
+                        <i data-lucide="cpu"></i>
+                        <span><strong>AI 架构专家：</strong>从0到1搭建企业级 AI 低代码 PaaS 基座，支撑全司几百个智能体运行</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i data-lucide="trending-up"></i>
+                        <span><strong>商业增长闭环：</strong>AI+SOP 重构业务流程，驱动人效提升 2.6 倍、GMV 增量 3000万+</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i data-lucide="layers"></i>
+                        <span><strong>全栈产品经验：</strong>兼具 AI 垂类应用、B端复杂 SaaS、C端增长全链路视野</span>
+                    </div>
+                </div>
+                <div class="hero-skills">
+                    <span class="skill-label">核心技术：</span>
+                    <span class="skill-tag">Dify</span>
+                    <span class="skill-tag">LLM</span>
+                    <span class="skill-tag">RAG</span>
+                    <span class="skill-tag">Agent</span>
+                    <span class="skill-tag">Teable</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作经历时间轴 -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">工作经历</h2>
+            <div class="timeline">
+                <!-- 高途教育 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>高途教育</h3>
+                            <span class="timeline-period">2021.05 - 至今</span>
+                        </div>
+                        <h4>高级 AI 产品经理</h4>
+                        <p class="timeline-brief">主导企业级 AI PaaS 基座建设，驱动全业务线智能化升级</p>
+                        <div class="timeline-achievements">
+                            <div class="achievement-item">
+                                <i data-lucide="bot"></i>
+                                <span>AI 基座平台支撑<strong>几百个</strong>智能体，调用量<strong>5000万+</strong></span>
+                            </div>
+                            <div class="achievement-item">
+                                <i data-lucide="trending-up"></i>
+                                <span>人效提升<strong>2.6倍</strong>，GMV 增量<strong>3000万+</strong></span>
+                            </div>
+                            <div class="achievement-item">
+                                <i data-lucide="message-circle"></i>
+                                <span>消息回复率从65%提升至<strong>99%</strong></span>
+                            </div>
+                        </div>
+                        <div class="timeline-stats">
+                            <span class="stat-badge">🏆 连续两年绩效 3.75</span>
+                            <span class="stat-badge">🏆 公司级项目奖</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 才博教育 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>才博教育</h3>
+                            <span class="timeline-period">2020.04 - 2021.05</span>
+                        </div>
+                        <h4>产品合伙人 <span class="company-tag">金山领投</span></h4>
+                        <p class="timeline-brief">主导智慧教育 SaaS 平台从0到1，构建"SaaS+内容"一体化解决方案</p>
+                        <div class="timeline-achievements">
+                            <div class="achievement-item">
+                                <i data-lucide="building-2"></i>
+                                <span>签约<strong>50+</strong>付费机构，验证 B2B2C 模式</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i data-lucide="users"></i>
+                                <span>C端服务学员<strong>20000+</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 金山办公 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>金山办公 WPS</h3>
+                            <span class="timeline-period">2018.05 - 2020.04</span>
+                        </div>
+                        <h4>产品经理</h4>
+                        <p class="timeline-brief">负责 WPS 精品课全链路产品，主导 APP 从0到1及全链路增长</p>
+                        <div class="timeline-achievements">
+                            <div class="achievement-item">
+                                <i data-lucide="smartphone"></i>
+                                <span>APP 端 ROI 高达<strong>1:5</strong></span>
+                            </div>
+                            <div class="achievement-item">
+                                <i data-lucide="share-2"></i>
+                                <span>公众号粉丝<strong>50万→150万</strong>（增幅200%）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="experience-footer">
+                <p>查看详细项目经历与成果</p>
+                <button class="download-btn-large" onclick="downloadPDF()">
+                    <i data-lucide="download"></i>
+                    下载完整简历 PDF
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI实验室 -->
+    <section id="ai-lab" class="ai-lab-section">
+        <div class="container">
+            <h2 class="section-title">AI 实验室</h2>
+            
+            <!-- Tab导航 -->
+            <div class="ai-lab-tabs">
+                <button class="tab-btn active" data-tab="websites">
+                    <i data-lucide="globe"></i>
+                    AI 网站
+                </button>
+                <button class="tab-btn" data-tab="images">
+                    <i data-lucide="image"></i>
+                    AI 图片
+                </button>
+                <button class="tab-btn" data-tab="videos">
+                    <i data-lucide="video"></i>
+                    AI 视频
+                </button>
+            </div>
+
+            <!-- Tab内容区域 -->
+            <div class="ai-lab-content">
+                <!-- AI网站区域 -->
+                <div class="tab-panel active" id="websites-panel">
+                    <div class="websites-grid" id="websites-grid">
+                        <!-- 动态生成的网站卡片 -->
+                    </div>
+                </div>
+
+                <!-- AI图片区域 -->
+                <div class="tab-panel" id="images-panel">
+                    <div class="images-masonry" id="images-masonry">
+                        <!-- 动态生成的图片卡片 -->
+                    </div>
+                </div>
+
+                <!-- AI视频区域 -->
+                <div class="tab-panel" id="videos-panel">
+                    <div class="videos-grid" id="videos-grid">
+                        <!-- 动态生成的视频卡片 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>联系方式</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>155-4905-1706</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>mia_xiaohui@163.com</span>
+                    </div>
+                </div>
+                <button class="download-btn-large" onclick="downloadPDF()">
+                    <i data-lucide="download"></i>
+                    下载 PDF 简历
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox模态框 -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">
+                <i data-lucide="x"></i>
+            </button>
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-tool"></p>
+                <div class="prompt-container">
+                    <strong>提示词：</strong>
+                    <p id="lightbox-prompt"></p>
+                    <button class="copy-prompt-btn" onclick="copyPrompt()">
+                        <i data-lucide="copy"></i>
+                        复制
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 视频播放模态框 -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">
+                <i data-lucide="x"></i>
+            </button>
+            <video class="video-player" id="video-player" controls>
+                <source src="" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
+        </div>
+    </div>
+
+    <!-- AI实验室脚本 -->
+    <script src="data/ai-lab.js"></script>
+    <script src="ai-lab.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- 调试：检查数据加载 -->
+    <script>
+        window.addEventListener('load', function() {
+            console.log('Page loaded');
+            console.log('aiLabData:', typeof window.aiLabData);
+            if (window.aiLabData) {
+                console.log('Websites:', window.aiLabData.websites?.length || 0);
+                console.log('Images:', window.aiLabData.images?.length || 0);
+                console.log('Videos:', window.aiLabData.videos?.length || 0);
+                
+                // 检查容器是否存在
+                console.log('Containers:', 
+                    document.getElementById('websites-grid')?.id,
+                    document.getElementById('images-masonry')?.id,
+                    document.getElementById('videos-grid')?.id
+                );
+            } else {
+                console.error('aiLabData not loaded!');
+            }
+        });
+    </script>
+</body>
+</html>
