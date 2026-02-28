@@ -1,10 +1,5 @@
 /**
  * AI 实验室数据配置文件
- * 
- * 使用说明：
- * 1. 直接修改下方的数据对象即可更新展示内容
- * 2. 图片/视频可以使用网络URL或本地路径（如 "./images/xxx.jpg"）
- * 3. 添加新内容：在对应数组中复制一个对象并修改即可
  */
 
 const aiLabData = {
@@ -14,7 +9,7 @@ const aiLabData = {
       title: "AI 智能课件生成助手",
       description: "基于 Dify 搭建的自动化课件生成工具，支持智能内容编排与多媒体插入，帮助教研团队将课件制作效率提升近90%。",
       banner: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=400&fit=crop",
-      link: "https://example.com/demo1",
+      link: "https://abc-paint.vercel.app",
       tags: ["Dify", "LLM", "教育"]
     },
     {
@@ -43,40 +38,60 @@ const aiLabData = {
   // ==================== AI 生成图片 ====================
   images: [
     {
-      title: "未来 AI 教育场景",
-      tool: "Midjourney v6",
-      prompt: "A futuristic AI-powered classroom with holographic teachers, students wearing AR glasses, interactive 3D learning materials floating in air, warm lighting, modern minimalist architecture, 8k resolution, cinematic composition",
-      url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=600&fit=crop"
+      title: "圣诞插画",
+      category: "插画",
+      style: "品牌",
+      tool: "即梦",
+      prompt: `温馨的圣诞夜书房场景，一位学生开心地打开一份特殊的"圣诞礼物"，礼物盒中发出的金色光芒化作飞舞的书本、铅笔和象征智慧的星星。礼物盒的缎带上用优雅的金色烫金字体写着"高途教育"四字，字体风格为现代宋体，线条流畅，与礼物盒的丝带纹理完美融合。窗外飘着雪，屋内是温暖的壁炉和圣诞树，树上装饰着小灯泡和几何公式挂饰。风格为柔和的光影插画，色彩以圣诞红、绿、金色为主，整体氛围温暖、梦幻、充满希望。画质精致，8K。--ar 16:9`,
+      url: "./images/圣诞插画.png"
     },
     {
-      title: "AI 产品经理工作空间",
-      tool: "Midjourney v6", 
-      prompt: "Modern AI product manager workspace with multiple curved monitors showing data dashboards and AI interfaces, holographic wireframes, clean desk setup, soft ambient lighting, professional atmosphere, photorealistic",
-      url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=800&fit=crop"
+      title: "春节活动宣发",
+      category: "海报",
+      style: "扁平插画",
+      tool: "即梦",
+      prompt: `卡通风格，一张构思巧妙的春节节日贺图。画面中，一条卡通骏马的金色轨迹蜿蜒形成视觉引导，其头部指向的右上方【标题填充区："暖途新春，骏马登场"】——此处被柔光与祥云环绕，构成天然的视觉焦点。漫天飘落的红包与灯笼巧妙布局，在画面左下方【文案填充区："活动地点：高途一楼大厅 | 活动时间：腊月廿八 14:00"】——此处自然形成了背景柔化、构图平衡的文字锚点。整体氛围由温暖的金红色光晕笼罩，元素之间流动交融。皮克斯动画电影质感，3D渲染，色彩温暖明亮，充满灵动与喜庆的叙事感。--ar 16:9`,
+      url: "./images/chunjie.png"
     },
     {
-      title: "智能体网络架构",
-      tool: "Midjourney v6",
-      prompt: "Abstract visualization of AI agents network, multiple glowing nodes connected by flowing data streams, blue and purple gradient, futuristic tech aesthetic, dark background, 3D render",
-      url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=600&fit=crop"
+      title: "端午主题海报",
+      category: "海报",
+      style: "新国潮",
+      tool: "即梦",
+      prompt: `新国潮风格端午主题艺术海报，融汇水墨意境与流体美学。画面以一条蜿蜒的青色流体河流为中心，象征汨罗江，河流形态抽象优雅，其中隐约有龙舟的流线型轮廓。两侧山峦采用柔和的莫兰迪绿色系，以层叠的抽象笔触呈现。画面中散布着晶莹的糯米与金箔质感的星星点缀。主视觉上方保留大片具有纸质肌理与柔和光晕的留白，构成【标题区：如"粽夏之约，寻味高途"】。下方山脚处自然形成一块宁静的深色区域，作为【信息区：如"时间：仲夏端午 | 地点：员工餐厅"】。整体色调高级，富有细节与流动性，兼具传统韵味与现代极简主义。--ar 16:9`,
+      url: "./images/duanwu.png"
     },
     {
-      title: "AI 低代码平台界面",
-      tool: "DALL-E 3",
-      prompt: "Clean and modern low-code AI platform interface design, drag-and-drop workflow builder, component library sidebar, visual node connections, professional SaaS UI, light theme, high fidelity mockup",
-      url: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=450&fit=crop"
+      title: "知识星云海报",
+      category: "海报",
+      style: "未来主义",
+      tool: "即梦",
+      prompt: `一幅充满未来主义设计感的"知识星云"主题培训海报。视觉中央，一个半透明发光的神经脉络网络（如脑树或数据云）在深邃的宇宙背景中展开，脉络如星河般延伸并连接着精致的技能符号（简约的齿轮、发光灯泡、对话气泡）。背景是流动的蓝紫渐变星云与细碎星光。画面右侧，一片由星云尘埃自然汇聚形成的悬浮信息面板，呈现柔和的深空底色与微光边缘。面板内部结构清晰：顶部星环交汇处作为主标题锚点，可融入例如"高途2024 · 认知进化计划"。下方星光坐标区作为详情锚点，用于排列例如"时间：每双周四 19:30 | 地点：云端会议室 | 主讲：内部赋能团队"。整体风格为科技诗意融合，富有纵深感与流动感，3D渲染，星云色系（蓝紫/青/鎏金），既保留宇宙的神秘氛围，又具备清晰的信息层级。--ar 16:9`,
+      url: "./images/xingyun.png"
     },
     {
-      title: "教育数据可视化",
-      tool: "Midjourney v6",
-      prompt: "Beautiful education analytics dashboard with floating charts and graphs, student performance metrics visualization, gradient colors blue and teal, modern glassmorphism design, dark mode interface",
-      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=750&fit=crop"
+      title: "知识生长海报",
+      category: "海报",
+      style: "清新扁平",
+      tool: "即梦",
+      prompt: `清新扁平的"知识生长"主题插画海报。画面中，卡通书籍堆叠成智慧小山，山顶长出发光的灯泡树，彩色小人正沿着树旁的阶梯向上攀登。背景是干净的天空渐变（浅蓝到米白）。信息生长区设计：整体构图采用开放式布局，画面左上方的留白云端自然形成标题锚点区，字体较大，例如可融入"高途学习季 · 认知发芽计划"；画面右下方的书籍阶梯旁，生长出一块柔和的浅色便签浮岛，作为详情信息区，用于清晰展示"时间：周五 15:00 地点：一楼大厅"。整体风格积极明亮，充满呼吸感与希望，色彩以活力橙色与宁静蓝色为主，简约扁平中带有细腻的层次。文字与图形元素自然共生，疏密有致。--ar 16:9`,
+      url: "./images/zhishi.png"
     },
     {
-      title: "AI 客服交互场景",
-      tool: "Midjourney v6",
-      prompt: "Friendly AI chatbot interface with speech bubbles, customer service scene, warm orange and blue color palette, modern flat design, human-AI collaboration concept art, clean background",
-      url: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&h=500&fit=crop"
+      title: "肺主皮毛，卫气在表",
+      category: "小红书图文",
+      style: "简笔手绘风",
+      tool: "Gemini-3-pro-image (Nano Banna Pro)",
+      prompt: `将以下主题肺主皮毛，卫气在表，核心 / 参考内容为肺主皮毛，卫气在表。\\n中医里面认为啊，肺主皮毛，那我们人体呢，有一股气叫卫气卫呢，它就是保卫的卫啊，保卫我们的身体的，它是在我们的表皮，在我们的肌肤那。既然它在我们的表皮，在我们的肌肤，那我们当我们的身体受寒的时候，它首先第一个侵犯的一定是我们的肌肤，一定是我们的肌肌壳啊，所以我们的毛孔会感受到寒冷，毛孔会第一次。就是说他会第一个感受到寒冷，会觉得，我的汗毛都竖起来了啊。为什么汗毛会竖起来了呀？因为我们正常，我们的毛孔是张开的对不对？那等到这个冷的时候，它就会干嘛？它是不是就收缩呀？那一收缩的时候，那个毛，那个毛毛是不是就立起来了？所以你就会感觉咦，那个毛都是立起来的，汗毛都立起来了那种感觉。，文字使用中文，图片比例为3:4经典比例/拍照/小红书图文。其他要求：图片尽量生动形象，内容全面，分辨率为 4K 超高清。\n\n\n## 角色（Role）\n-你是一名专业的 手绘笔记艺术家和信息设计师。\n\n## 任务（Task）\n- 字体设计,有创意,创意手绘字,文字排版艺术,手写字线条细,线条圆润,冲击力,艺术构图,先锋艺术,极致清晰,极简主义,简约高级,杰作。\n\n-基于我选中的文本内容或者我选中的资料或者page，创建一张清晰、简洁的 手绘笔记风格的手绘草图图像，画风要有很强的手绘感\n\n-旨在帮助读者快速把握其内在逻辑和核心要点。\n\n\n## 步骤（Steps）\n-阅读并提取“关键节点”（角色/动作/结果/条件），按流程或因果关系进行组织；\n\n-确保每一幅图都有一个清晰、简短的主题，把主题用大字表现，并确保视觉集中。不要在一幅手绘图中提供过多信息，不要让视觉过于拥挤。\n\n-用简洁的中文关键词命名其他关键节点，确保文字书写正确、措辞易于理解，字号要比主题小至少一级。不要在一张图里放太多文字。\n-让生成效果更简洁。\n\n-填满画布以保证视觉均衡，不要过度居中。\n\n\n## 核心要求（Core Requirements）\n-视觉风格：严格遵循 手绘笔记的手绘风格。所有元素都应具有手写感。使用干净、极简的线条，并配合简单图标。整体感觉应像用彩色铅笔在白板或笔记本上绘制。\n\n-构图与布局：整体布局必须清晰、简洁、有逻辑，能自然引导读者视线。布局不需要严格遵循从左到右或从上到下；合理自由地安排元素，并确保它们之间有足够的空间。严格避免箭头重叠；确保视觉不混乱。\n\n-颜色：黑色为主要素描线条，以确保视觉清晰，但可用其他颜色（如红色用于强调、绿色或黄色用于装饰），保持整体简洁；纯白色背景，高对比度；不使用渐变、不使用阴影、不使用照片/3D/拟物风格。\n\n\n## 输出目标（Output Goal）\n生成一张手绘笔记，能清晰解释原文的核心思想，让任何看到这张图的人都能快速理解其主要内容。\n\n\n核心要求：\n1. 所有 中文 文字均需作为独立文字图层处理，而非贴图。保证文字清晰可读，达到印刷级锐利度标准。\n2. 文字渲染必须精准无误，严禁出现文字变形、笔画缺失，确保每个汉字都清晰可辨，字体间距合理。\n3. 以 中文 文字制作完整的信息卡成品，尽量采用视觉冲击力强的呈现形式，所有内容需在单页内呈现。\n4. 字体仅限使用手写体、思源黑体Bold、思源宋体。\n5. 不得出现任何其他无关内容。\n\n补充文字渲染细则：\n1. 所有文字均为独立矢量图层，而非位图图像。\n2. 绝对精准：无文字变形、笔画缺失或模糊问题 —— 每个汉字的字形结构都必须完整规范。\n3. 印刷级锐利度：放大至 400% 比例时，文字边缘依然利落清晰，无任何抗锯齿失真现象。\n4. 文字与背景的对比度需达到最低 4.5:1 的标准。\n5. 文字字号最小不低于 24.5 磅，保障阅读清晰度。`,
+      url: "./images/jianbi.png"
+    },
+    {
+      title: "管综数学每日一题",
+      category: "每日一练(答案解析)",
+      style: "简笔手绘风",
+      tool: "Gemini-3-pro-image (Nano Banna Pro)",
+      prompt: `将以下主题每日一题显示成199管综数学每日一题，\\n需要再排版最上方显示题目内容\\n然后下面依次显示答案、考点、解析。删除解题关键这四个字。答案与解析只出现一次，核心 / 参考内容为用一块边长为 6 的正方形铁皮，按下面三种方式做成无盖容器：\\n① 四角剪去小正方形，折成长方体\\n② 以正方形一边为高，卷成正四棱柱\\n③ 以正方形一边为母线，卷成圆柱（不计损耗），它们容积大小关系正确的是（ ）.\\nA. ①>②>③\\nB. ②>①>③\\nC. ③>②>①\\nD. ③>①>②\\nE. ②>③>①，文字使用中文，图片比例为9:16竖版/视频封面。其他要求：不要出现必背两个字；\\n思考方向简单明了即可，一句话带过，不要太多内容，要符合学生做题；\\n选项与题目之间不要出现其他文字内容，比如括号、xx年真题、管综数学等字眼；\\n最上方标题为：199管综数学 每日一题，分辨率为 4K 超高清。\n\n\n手绘卡通风格的答案与解析，浅色系底色 + 虚线装饰边框，颜色搭配美观好看，风格轻松易懂：\n\n标题区：【答案与解析】\n核心板块：\n标题 “答案与解析”，搭配卡通图标\n标题 “[解题关键]”，搭配卡通图标\n内容 1：“核心考点：{核心考点内容}”\n内容 2：“思考方向：{具体思考提示内容}”，搭配卡通图标，可视化展示\n\n\n核心要求：\n1. 所有 中文 文字均需作为独立文字图层处理，而非贴图。保证文字清晰可读，达到印刷级锐利度标准。\n2. 文字渲染必须精准无误，严禁出现文字变形、笔画缺失，确保每个汉字都清晰可辨，字体间距合理。\n3. 以 中文 文字制作完整的信息卡成品，尽量采用视觉冲击力强的呈现形式，所有内容需在单页内呈现。\n4. 字体仅限使用手写体、思源黑体Bold、思源宋体。\n5. 不得出现任何其他无关内容。\n\n补充文字渲染细则：\n1. 所有文字均为独立矢量图层，而非位图图像。\n2. 绝对精准：无文字变形、笔画缺失或模糊问题 —— 每个汉字的字形结构都必须完整规范。\n3. 印刷级锐利度：放大至 400% 比例时，文字边缘依然利落清晰，无任何抗锯齿失真现象。\n4. 文字与背景的对比度需达到最低 4.5:1 的标准。\n5. 文字字号最小不低于 24.5 磅，保障阅读清晰度。\n`,
+      url: "./images/meiriyiti.png"
     }
   ],
 

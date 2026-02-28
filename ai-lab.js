@@ -1,8 +1,9 @@
 // AI实验室功能模块
 class AILab {
     constructor() {
-        this.currentTab = 'websites';
+        this.currentTab = 'images';
         this.isAnimating = false;
+        this.expandedCards = new Set(); // 跟踪已展开的卡片
         this.init();
     }
 
@@ -31,49 +32,19 @@ class AILab {
             });
         });
 
-        // 图片点击事件（委托）
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.image-card img')) {
-                const card = e.target.closest('.image-card');
-                this.openLightbox(card);
-            }
-        });
-
-        // 视频播放事件（委托）
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.play-button')) {
-                const card = e.target.closest('.video-card');
-                this.openVideoModal(card);
-            }
-        });
-
-        // Lightbox关闭事件
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox' || e.target.closest('.lightbox-close')) {
-                this.closeLightbox();
-            }
-        });
-
-        // 视频模态框关闭事件
-        document.getElementById('video-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'video-modal' || e.target.closest('.video-modal-close')) {
-                this.closeVideoModal();
-            }
-        });
-
-        // ESC键关闭模态框
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeLightbox();
-                this.closeVideoModal();
-            }
-        });
-
-        // 提示词切换事件（委托）
+        // Prompt切换事件（委托）
         document.addEventListener('click', (e) => {
             if (e.target.closest('.prompt-toggle')) {
                 const toggle = e.target.closest('.prompt-toggle');
                 this.togglePrompt(toggle);
+            }
+        });
+
+        // 复制提示词事件（委托）
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.copy-prompt-btn')) {
+                const btn = e.target.closest('.copy-prompt-btn');
+                this.copyPrompt(btn);
             }
         });
     }
@@ -95,7 +66,7 @@ class AILab {
 
         // 淡出动画
         currentPanel.style.opacity = '0';
-        currentPanel.style.transform = 'translateY(20px)';
+        currentPanel.style.transform = 'translateY(15px)';
 
         setTimeout(() => {
             // 隐藏当前面板
@@ -106,7 +77,7 @@ class AILab {
             // 显示新面板
             newPanel.classList.add('active');
             newPanel.style.opacity = '0';
-            newPanel.style.transform = 'translateY(20px)';
+            newPanel.style.transform = 'translateY(15px)';
 
             // 淡入动画
             requestAnimationFrame(() => {
@@ -119,7 +90,7 @@ class AILab {
                     this.isAnimating = false;
                 }, 400);
             });
-        }, 400);
+        }, 300);
 
         this.currentTab = tab;
     }
@@ -131,7 +102,7 @@ class AILab {
 
         container.innerHTML = window.aiLabData.websites.map(website => `
             <div class="website-card">
-                <img src="${website.banner}" alt="${website.title}" class="website-banner">
+                <img src="${website.banner}" alt="${website.title}" class="website-banner" loading="lazy">
                 <div class="website-content">
                     <h3 class="website-title">${website.title}</h3>
                     <p class="website-description">${website.description}</p>
@@ -158,20 +129,29 @@ class AILab {
             <div class="image-card" data-index="${index}">
                 <div class="image-wrapper">
                     <img src="${image.url}" alt="${image.title}" loading="lazy">
+                    <div class="image-overlay">
+                        <span class="image-category">${image.category}</span>
+                    </div>
                 </div>
                 <div class="image-info">
                     <h3 class="image-title">${image.title}</h3>
-                    <div class="image-tool">
-                        <span class="tool-label">生成工具</span>
-                        <span class="tool-tag">${image.tool}</span>
+                    <div class="image-meta">
+                        <span class="meta-tag meta-style">${image.style}</span>
+                        <span class="meta-tag meta-tool">${image.tool}</span>
                     </div>
                     <div class="prompt-section">
-                        <div class="prompt-toggle">
+                        <div class="prompt-toggle" data-index="${index}">
                             <i data-lucide="sparkles" class="prompt-icon"></i>
                             <span>查看提示词</span>
                             <i data-lucide="chevron-down" class="chevron-icon"></i>
                         </div>
-                        <div class="prompt-text">${image.prompt}</div>
+                        <div class="prompt-text" id="prompt-${index}">
+                            ${image.prompt}
+                            <button class="copy-prompt-btn" data-prompt="${this.escapeHtml(image.prompt)}">
+                                <i data-lucide="copy"></i>
+                                复制提示词
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -187,11 +167,16 @@ class AILab {
 
         container.innerHTML = window.aiLabData.videos.map((video, index) => `
             <div class="video-card" data-video-index="${index}">
-                <div class="video-thumbnail">
-                    <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
-                    <div class="play-button">
-                        <i data-lucide="play"></i>
-                    </div>
+                <div class="video-wrapper">
+                    <video 
+                        id="video-${index}"
+                        poster="${video.thumbnail}"
+                        preload="metadata"
+                        controls
+                    >
+                        <source src="${video.videoUrl}" type="video/mp4">
+                        您的浏览器不支持视频播放。
+                    </video>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">${video.title}</h3>
@@ -203,105 +188,51 @@ class AILab {
         this.initLucideIcons();
     }
 
-    // 打开Lightbox
-    openLightbox(card) {
-        const index = card.dataset.index;
-        const image = window.aiLabData.images[index];
-        
-        if (!image) return;
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxTitle = document.getElementById('lightbox-title');
-        const lightboxTool = document.getElementById('lightbox-tool');
-        const lightboxPrompt = document.getElementById('lightbox-prompt');
-
-        lightboxImage.src = image.url;
-        lightboxImage.alt = image.title;
-        lightboxTitle.textContent = image.title;
-        lightboxTool.textContent = `工具：${image.tool}`;
-        lightboxPrompt.textContent = image.prompt;
-
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    // 关闭Lightbox
-    closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // 打开视频模态框
-    openVideoModal(card) {
-        const index = card.dataset.videoIndex;
-        const video = window.aiLabData.videos[index];
-        
-        if (!video) return;
-
-        const modal = document.getElementById('video-modal');
-        const player = document.getElementById('video-player');
-        const source = player.querySelector('source');
-        
-        source.src = video.videoUrl;
-        player.load();
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // 自动播放
-        setTimeout(() => {
-            player.play().catch(() => {
-                // 自动播放可能被阻止，不处理错误
-            });
-        }, 300);
-    }
-
-    // 关闭视频模态框
-    closeVideoModal() {
-        const modal = document.getElementById('video-modal');
-        const player = document.getElementById('video-player');
-        
-        player.pause();
-        player.currentTime = 0;
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+    // 转义HTML特殊字符
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 
     // 切换提示词显示
     togglePrompt(toggle) {
-        const promptSection = toggle.closest('.prompt-section');
-        const promptText = promptSection.querySelector('.prompt-text');
+        const index = toggle.dataset.index;
+        const promptText = document.getElementById(`prompt-${index}`);
         const chevron = toggle.querySelector('.chevron-icon');
+        const label = toggle.querySelector('span');
         
-        promptText.classList.toggle('show');
+        const isExpanded = promptText.classList.contains('show');
         
-        // 旋转箭头图标
-        if (promptText.classList.contains('show')) {
-            chevron.style.transform = 'rotate(180deg)';
-            toggle.querySelector('span').textContent = '收起提示词';
-        } else {
+        if (isExpanded) {
+            promptText.classList.remove('show');
             chevron.style.transform = 'rotate(0deg)';
-            toggle.querySelector('span').textContent = '查看提示词';
+            label.textContent = '查看提示词';
+            this.expandedCards.delete(index);
+        } else {
+            promptText.classList.add('show');
+            chevron.style.transform = 'rotate(180deg)';
+            label.textContent = '收起提示词';
+            this.expandedCards.add(index);
         }
     }
 
     // 复制提示词
-    copyPrompt() {
-        const promptText = document.getElementById('lightbox-prompt').textContent;
+    copyPrompt(btn) {
+        const promptText = btn.dataset.prompt;
         
         navigator.clipboard.writeText(promptText).then(() => {
             // 显示复制成功提示
-            const btn = document.querySelector('.copy-prompt-btn');
-            const originalText = btn.innerHTML;
+            const originalHTML = btn.innerHTML;
             btn.innerHTML = '<i data-lucide="check"></i> 已复制';
+            btn.classList.add('copied');
             
-            lucide.createIcons();
+            this.initLucideIcons();
             
             setTimeout(() => {
-                btn.innerHTML = originalText;
-                lucide.createIcons();
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('copied');
+                this.initLucideIcons();
             }, 2000);
         }).catch(() => {
             // 降级方案
@@ -312,21 +243,22 @@ class AILab {
             document.execCommand('copy');
             document.body.removeChild(textArea);
             
-            const btn = document.querySelector('.copy-prompt-btn');
-            const originalText = btn.innerHTML;
+            const originalHTML = btn.innerHTML;
             btn.innerHTML = '<i data-lucide="check"></i> 已复制';
+            btn.classList.add('copied');
             
-            lucide.createIcons();
+            this.initLucideIcons();
             
             setTimeout(() => {
-                btn.innerHTML = originalText;
-                lucide.createIcons();
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('copied');
+                this.initLucideIcons();
             }, 2000);
         });
     }
 }
 
-// 全局函数供HTML调用
+// 全局实例
 let aiLabInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -339,18 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     checkData();
 });
-
-function closeLightbox() {
-    if (aiLabInstance) aiLabInstance.closeLightbox();
-}
-
-function closeVideoModal() {
-    if (aiLabInstance) aiLabInstance.closeVideoModal();
-}
-
-function copyPrompt() {
-    if (aiLabInstance) aiLabInstance.copyPrompt();
-}
 
 // 导出模块供其他脚本使用
 window.AILab = AILab;

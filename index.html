@@ -21,10 +21,7 @@
             <div class="nav-right">
                 <a href="#experience" class="nav-link">工作经历</a>
                 <a href="#ai-lab" class="nav-link">AI 实验室</a>
-                <button class="download-btn" onclick="downloadPDF()">
-                    <i data-lucide="download"></i>
-                    下载 PDF 简历
-                </button>
+
             </div>
         </div>
     </nav>
@@ -170,13 +167,7 @@
                 </div>
             </div>
             
-            <div class="experience-footer">
-                <p>查看详细项目经历与成果</p>
-                <button class="download-btn-large" onclick="downloadPDF()">
-                    <i data-lucide="download"></i>
-                    下载完整简历 PDF
-                </button>
-            </div>
+
         </div>
     </section>
 
@@ -187,31 +178,31 @@
             
             <!-- Tab导航 -->
             <div class="ai-lab-tabs">
-                <button class="tab-btn active" data-tab="websites">
-                    <i data-lucide="globe"></i>
-                    AI 网站
+                <button class="tab-btn" data-tab="websites">
+                    <span class="tab-icon"><i data-lucide="globe"></i></span>
+                    <span class="tab-text">AI 网站</span>
                 </button>
-                <button class="tab-btn" data-tab="images">
-                    <i data-lucide="image"></i>
-                    AI 图片
+                <button class="tab-btn active" data-tab="images">
+                    <span class="tab-icon"><i data-lucide="image"></i></span>
+                    <span class="tab-text">AI 图片</span>
                 </button>
                 <button class="tab-btn" data-tab="videos">
-                    <i data-lucide="video"></i>
-                    AI 视频
+                    <span class="tab-icon"><i data-lucide="video"></i></span>
+                    <span class="tab-text">AI 视频</span>
                 </button>
             </div>
 
             <!-- Tab内容区域 -->
             <div class="ai-lab-content">
                 <!-- AI网站区域 -->
-                <div class="tab-panel active" id="websites-panel">
+                <div class="tab-panel" id="websites-panel">
                     <div class="websites-grid" id="websites-grid">
                         <!-- 动态生成的网站卡片 -->
                     </div>
                 </div>
 
                 <!-- AI图片区域 -->
-                <div class="tab-panel" id="images-panel">
+                <div class="tab-panel active" id="images-panel">
                     <div class="images-masonry" id="images-masonry">
                         <!-- 动态生成的图片卡片 -->
                     </div>
@@ -242,48 +233,10 @@
                         <span>mia_xiaohui@163.com</span>
                     </div>
                 </div>
-                <button class="download-btn-large" onclick="downloadPDF()">
-                    <i data-lucide="download"></i>
-                    下载 PDF 简历
-                </button>
+
             </div>
         </div>
     </section>
-
-    <!-- Lightbox模态框 -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">
-                <i data-lucide="x"></i>
-            </button>
-            <img class="lightbox-image" id="lightbox-image" src="" alt="">
-            <div class="lightbox-info">
-                <h3 id="lightbox-title"></h3>
-                <p id="lightbox-tool"></p>
-                <div class="prompt-container">
-                    <strong>提示词：</strong>
-                    <p id="lightbox-prompt"></p>
-                    <button class="copy-prompt-btn" onclick="copyPrompt()">
-                        <i data-lucide="copy"></i>
-                        复制
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 视频播放模态框 -->
-    <div class="video-modal" id="video-modal">
-        <div class="video-modal-content">
-            <button class="video-modal-close" onclick="closeVideoModal()">
-                <i data-lucide="x"></i>
-            </button>
-            <video class="video-player" id="video-player" controls>
-                <source src="" type="video/mp4">
-                您的浏览器不支持视频播放。
-            </video>
-        </div>
-    </div>
 
     <!-- AI实验室脚本 -->
     <script src="data/ai-lab.js"></script>
