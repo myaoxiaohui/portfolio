@@ -178,10 +178,6 @@
             
             <!-- Tab导航 -->
             <div class="ai-lab-tabs">
-                <button class="tab-btn" data-tab="websites">
-                    <span class="tab-icon"><i data-lucide="globe"></i></span>
-                    <span class="tab-text">AI 网站</span>
-                </button>
                 <button class="tab-btn active" data-tab="images">
                     <span class="tab-icon"><i data-lucide="image"></i></span>
                     <span class="tab-text">AI 图片</span>
@@ -190,17 +186,14 @@
                     <span class="tab-icon"><i data-lucide="video"></i></span>
                     <span class="tab-text">AI 视频</span>
                 </button>
+                <button class="tab-btn" data-tab="websites">
+                    <span class="tab-icon"><i data-lucide="globe"></i></span>
+                    <span class="tab-text">AI 网站</span>
+                </button>
             </div>
 
             <!-- Tab内容区域 -->
             <div class="ai-lab-content">
-                <!-- AI网站区域 -->
-                <div class="tab-panel" id="websites-panel">
-                    <div class="websites-grid" id="websites-grid">
-                        <!-- 动态生成的网站卡片 -->
-                    </div>
-                </div>
-
                 <!-- AI图片区域 -->
                 <div class="tab-panel active" id="images-panel">
                     <div class="images-masonry" id="images-masonry">
@@ -212,6 +205,13 @@
                 <div class="tab-panel" id="videos-panel">
                     <div class="videos-grid" id="videos-grid">
                         <!-- 动态生成的视频卡片 -->
+                    </div>
+                </div>
+
+                <!-- AI网站区域 -->
+                <div class="tab-panel" id="websites-panel">
+                    <div class="websites-grid" id="websites-grid">
+                        <!-- 动态生成的网站卡片 -->
                     </div>
                 </div>
             </div>
